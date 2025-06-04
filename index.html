@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>duc - Coming Soon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fcb707;
+            font-family: 'Fredoka', cursive;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 500px;
+            padding: 20px;
+        }
+
+        .duck-image {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 3px 3px 0px #333, -1px -1px 0px #333, 1px -1px 0px #333, -1px 1px 0px #333;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .coming-soon {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .typing-animation::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Fredoka', cursive;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .twitter-btn {
+            background: #1DA1F2;
+            color: white;
+        }
+
+        .twitter-btn:hover {
+            background: #0d8bd9;
+        }
+
+        .buy-btn {
+            background: #ff6b35;
+            color: white;
+        }
+
+        .buy-btn:hover {
+            background: #e55a2b;
+        }
+
+        .twitter-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .title {
+                font-size: 3rem;
+            }
+            
+            .duck-image {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 200px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/68408296d72b7272f31d7350_duc.png" alt="duc" class="duck-image">
+        
+        <h1 class="title">duc</h1>
+        
+        <div class="coming-soon" id="typing-text"></div>
+        
+        <div class="buttons">
+            <a href="https://twitter.com" class="btn twitter-btn" target="_blank">
+                <img src="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/6838de5fb56905c169669b27_61w1Q5OxE2L%20(1).png" alt="Twitter" class="twitter-icon">
+                Twitter
+            </a>
+            
+            <a href="https://pump.fun" class="btn buy-btn" target="_blank">
+                buy $duc
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const text = "coming soon...";
+        const typingElement = document.getElementById('typing-text');
+        let index = 0;
+        let isDeleting = false;
+        let typeSpeed = 150;
+
+        function type() {
+            if (!isDeleting && index <= text.length) {
+                typingElement.textContent = text.slice(0, index);
+                typingElement.classList.add('typing-animation');
+                index++;
+                setTimeout(type, typeSpeed);
+            } else if (isDeleting && index >= 0) {
+                typingElement.textContent = text.slice(0, index);
+                index--;
+                setTimeout(type, typeSpeed / 2);
+            } else if (!isDeleting && index > text.length) {
+                setTimeout(() => {
+                    isDeleting = true;
+                    typingElement.classList.remove('typing-animation');
+                    type();
+                }, 2000);
+            } else if (isDeleting && index < 0) {
+                isDeleting = false;
+                setTimeout(type, 500);
+            }
+        }
+
+        // Start typing animation
+        setTimeout(type, 1000);
+    </script>
+</body>
+</html>
