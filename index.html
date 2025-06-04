@@ -17,12 +17,41 @@
         body {
             background-color: #fcb707;
             font-family: 'Fredoka', cursive;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
+            overflow-x: hidden;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #fcb707;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: white;
+            font-weight: 500;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #333;
         }
 
         .container {
@@ -66,7 +95,7 @@
         .coming-soon {
             font-size: 1.5rem;
             font-weight: 500;
-            color: #333;
+            color: white;
             margin-bottom: 40px;
             height: 40px;
             display: flex;
@@ -302,10 +331,11 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/68408533cfa7a08ca23fce3f_dak1.png" alt="duc" class="duck-image" id="duckImage">
+    <div class="main-content">
+        <div class="container">
+        <img src="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/68408296d72b7272f31d7350_duc.png" alt="duc" class="duck-image" id="duckImage">
         
-        <h1 class="title">dak</h1>
+        <h1 class="title">duc</h1>
         
         <div class="coming-soon" id="typing-text"></div>
         
@@ -320,9 +350,15 @@
             </a>
 
             <button class="btn dakification-btn" id="dakificationBtn">
-                🦆 dakification
+                <img src="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/68408533cfa7a08ca23fce3f_dak1.png" alt="dak" style="width: 20px; height: 20px; margin-right: 5px;">
+                dakification
             </button>
         </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        dak © 2025 | <a href="mailto:team@dakquack.art">team@dakquack.art</a>
     </div>
 
     <!-- Modal -->
@@ -341,9 +377,9 @@
             </div>
             
             <div class="controls" id="controls" style="display: none;">
-                <button class="control-btn size-btn" onclick="resizeDuck(0.8)">Smaller 🦆</button>
-                <button class="control-btn size-btn" onclick="resizeDuck(1.2)">Bigger 🦆</button>
-                <button class="control-btn download-btn" id="downloadBtn">Download Dakified PFP! 🎉</button>
+                <button class="control-btn size-btn" onclick="resizeDuck(0.8)">smaller <img src="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/68408533cfa7a08ca23fce3f_dak1.png" alt="dak" style="width: 16px; height: 16px; margin-left: 3px;"></button>
+                <button class="control-btn size-btn" onclick="resizeDuck(1.2)">bigger <img src="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/68408533cfa7a08ca23fce3f_dak1.png" alt="dak" style="width: 16px; height: 16px; margin-left: 3px;"></button>
+                <button class="control-btn download-btn" id="downloadBtn">download dakified pfp!</button>
             </div>
         </div>
     </div>
